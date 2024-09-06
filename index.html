@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ searchQuery: '', loading: false }">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAIZ WEBTOOL'S</title>
+    <meta name="description" content="Explore a range of tools designed to simplify image sharing, boost social media engagement, and automate everyday tasks, from AI interactions to content creation and sharing.">
+    <meta property="og:image" content="https://i.imgur.com/DiHuHfB.jpeg">
+    <meta property="og:url" content="https://kaiz-webtools.pages.dev/">
+    <link rel="icon"
+    href="image/icon.png">  
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="fixed-header p-4 rounded-b-lg flex justify-between items-center shadow-lg header-shadow header-content">
+        <h1 class="text-3xl font-bold header-title"><i class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 10s;"></i> Kaiz Webtool's</h1>
+        <div class="flex items-center space-x-4">
+            <div id="time" class="tooltip">
+                <span class="tooltiptext">Current Time</span>
+            </div>
+            <div id="ping" class="tooltip">
+                <span class="tooltiptext">Ping</span>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto p-6 header-spacing">
+        <div>
+            <h2 class="text-lg font-bold mb-3 mt-5">Greetings!</h2>
+            <p class="text-gray-300 mb-6">Explore a range of tools designed to simplify image sharing, boost social media engagement, and automate everyday tasks, from AI interactions to content creation and sharing.</p>
+            <div class="flex flex-wrap space-x-2 mb-6 justify-center">
+                <div class="search-bar mb-2">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search projects..." class="bg-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none" x-model="searchQuery" @input="loading = true; setTimeout(() => loading = false, 500);">
+                </div>
+                <button onclick="filterProjects('all')" class="bg-blue-500 text-black px-3 py-2 rounded-lg shadow-md mb-2 focus:outline-none"><i class="fas fa-th mr-2"></i>All</button>
+                <button onclick="filterProjects('A.I')" class="bg-gray-700 text-white px-3 py-1 rounded-lg shadow-md mb-2 focus:outline-none"><i class="fas fa-robot"></i></button>
+                <button onclick="filterProjects ('FB')" class="bg-gray-700 text-white px-3 py-1 rounded-lg shadow-md mb-2 focus:outline-none"><i class="fab fa-facebook"></i></button>
+                <button onclick="filterProjects ('Image')" class="bg-gray-700 text-white px-3 py-1 rounded-lg shadow-md mb-2 focus:outline-none"><i class="fas fa-image"></i></button>
+                <button onclick="filterProjects ('Tool')" class="bg-gray-700 text-white px-3 py-1 rounded-lg shadow-md mb-2 focus:outline-none"><i class="fas fa-tools"></i></button>
+            </div>
+            <div x-show="loading" class="loading-spinner">
+                <div></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              
+              <!-- Character AI -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="A.I" x-show="searchQuery === '' || 'Character AI || Gojo Satoru'.toLowerCase().includes(searchQuery.toLowerCase())">
+                    <img src="https://i.imgur.com/pDRLQvR.jpeg" alt="Character AI || Gojo Satoru" class="w-full h-40 object-cover mb-2 rounded-md">
+                    <div class="status">
+                        <span class="dot"></span>
+                        Up
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Character AI || Gojo Satoru</h3>
+                    <p class="text-gray-400 mb-2">A.I</p>
+                    <p class="text-gray-300 mb-6 text-xs">An interactive AI tool that let you chat with character inspired by Gojo Satoru from Jujutsu Kaisen.</p>
+                    <a href="https://gojo-v2-character-ai.vercel.app/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- Tiktok Downloader -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Tool" x-show="searchQuery === '' || 'Tiktok Video Downloader'.toLowerCase().includes(searchQuery.toLowerCase())">
+                    <img src="https://i.imgur.com/OVhpDo2.jpeg" alt="TikTok Downloader" class="w-full h-40 object-cover mb-2 rounded-md">
+                    <div class="status">
+                        <span class="dot"></span>
+                        Up
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Tiktok Video Downloader</h3>
+                    <p class="text-gray-400 mb-2">Tool</p>
+                    <p class="text-gray-300 mb-6 text-xs">Easily download TikTok videos without watermarks using this fast and efficient downloader.</p>
+                    <a href="https://kaiz-tikdownloader.onlitegix.com/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- NGL Spammer -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Tool" x-show="searchQuery === '' || 'Ngl Spammer'.toLowerCase().includes(searchQuery.toLowerCase())">
+                    <img src="https://i.imgur.com/xbbUH1k.jpeg" alt="NGL Spammer" class="w-full h-40 object-cover mb-2 rounded-md">
+                    <div class="status">
+                        <span class="dot"></span>
+                        Up
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">NGL Spammer</h3>
+                    <p class="text-gray-400 mb-2">Tool</p>
+                    <p class="text-gray-300 mb-6 text-xs">Automate and send multiple anonymous messages on NGL platforms with this efficient spamming tool.</p>
+                    <a href="https://ngl-spammer-web.onlitegix.com/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- Image Search Tool -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Image" x-show="searchQuery === '' || 'Image Search'.toLowerCase().includes(searchQuery.toLowerCase())">
+                    <img src="https://i.imgur.com/aVu3dNk.jpeg" alt="Image search" class="w-full h-40 object-cover mb-2 rounded-md">
+                    <div class="status">
+                        <span class="dot"></span>
+                        Up
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Image Search Tool</h3>
+                    <p class="text-gray-400 mb-2">Tool</p>
+                    <p class="text-gray-300 mb-6 text-xs">A reverse image search tool to find similar images across the web.</p>
+                    <a href="https://image-search-tool-v1.vercel.app/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i> Check it now!</a>
+                </div>
+                
+                <!-- Image Uploader -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Image" x-show="searchQuery === '' || 'Image Imgur Uploader'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/1LuzLDu.jpeg" alt="Image Uploader" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">Image Uploader</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">Simple and fast Imgur image uploader for quick image hosting and sharing.</p>
+                  <a href="https://imgur-image-uploader-v1.vercel.app" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- Facebook Cover Generator -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="FB" x-show="searchQuery === '' || 'Custom Facebook Cover Generator' .toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/eIWnfAs.png" alt="Custom Facebook Cover Generator" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">Facebook Cover Generator</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">Create stunning Facebook cover photos with customizable designs and effects.</p>
+                  <a href="https://fb-cover-generator-v1.vercel.app/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- QR Code Generator -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Image" x-show="searchQuery === '' || 'Qr Code Generator'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/gqzowWs.jpeg" alt="Qr Code Generator" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">QR Code Generator</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">Generate custom QR codes for your website, social media, or any link.</p>
+                  <a href="https://qr-code-generator-xd.vercel.app/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- IP viewer -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="Tool" x-show="searchQuery === '' || 'Your IP Info'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/WWKyr7k.jpeg" alt="Your IP info" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">IP Address viewer</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">Check your public IP address, view geolocation on a map, and test your internet speed all in one tool.</p>
+                  <a href="https://your-ip-info-xd.vercel.app/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- Facebook Shareboost-->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="FB" x-show="searchQuery === '' || 'Facebook Shareboost'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/pM6IsvP.jpeg" alt="Facebook Shareboost" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">Facebook Shareboost</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">A tool to boost social media shares and engagement for your content.</p>
+                  <a href="https://kaiz-shareboost-appstate.onlitegix.com/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- Facebook Appstate & Token Getter -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="FB" x-show="searchQuery === '' || 'Facebook Appstate & Token Getter'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/2UEC0Oj.jpeg" alt="Image Uploader" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">Appstate & Token Getter</h3>
+                  <p class="text-gray-400 mb-2">Tool</p>
+                  <p class="text-gray-300 mb-6 text-xs">Extract Facebook Appstate & Access Tokens to manage sessions and automate processes.</p>
+                  <a href="https://facebook-appstate-token-getter.onlitegix.com/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+                
+                <!-- My Rest Api -->
+                <div class="card p-4 rounded-lg project-card shadow-lg fade-in" data-category="A.I" x-show="searchQuery === '' || 'Kaizenji Rest Api'.toLowerCase().includes(searchQuery.toLowerCase())">
+                  <img src="https://i.imgur.com/iZXRgFd.jpeg" alt="REST API" class="w-full h-40 object-cover mb-2 rounded-md">
+                  <div class="status">
+                    <span class="dot"></span>
+                    Up
+                  </div>
+                  <h3 class="text-lg font-bold mb-1">Simple rest API</h3>
+                  <p class="text-gray-400 mb-2">API</p>
+                  <p class="text-gray-300 mb-6 text-xs">A simple API for adding custom commands to Messenger bots, making automation easier.</p>
+                  <a href="https://kaizenji-rest-api.onrender.com/" target="_blank" class="bubble-button focus:outline-none"><i class="fas fa-external-link-alt mr-2"></i>Check it now!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    <footer>
+      <p>&copy; 2024 Jaycee. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="javascript:void(0)" onclick="showPrivacyPolicy()">Privacy Policy</a>
+        <a href="javascript:void(0)" onclick="showTermsOfService()">Terms of Service</a>
+        <a href="javascript:void(0)" onclick="showContactInfo()">Contact Us</a>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:kaizenji2004@gmail.com" target="_blank" <i class="fa fa-envelope"></i></a>
+        <a href="https://github.com/kaizenji"><i class="fab fa-github"></i></a>
+        <a href="https://discordapp.com/users/1203570918023110658"><i class="fab fa-discord"></i></a>
+      </div>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>
